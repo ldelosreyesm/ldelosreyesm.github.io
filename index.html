@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyApp - Embedded</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  </head>
+  <body id="main">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">MyApp</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a id="titleNavBar" class="nav-link active" aria-current="page" href="#">JsonGenerator</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+	<div class="container">
+		<h3 id="formTitle">Json Generator</h3>
+		<form id="configForm" class="row g-3">
+			<div class="input-group">
+				<span class="input-group-text">Path*,*value</span>
+				<textarea id="jsonConfig" class="form-control" aria-label="EndUserSetting" style="height: 200px;"></textarea>
+			  </div>
+		  <div class="row g-3">
+			<div class="col-md-3">
+			  <button type="submit" class="btn btn-primary">Generate</button>
+			</div>
+		  </div>
+		</form>
+		<br>
+		<div class="card row g-3">
+			<div class="card-body">
+				<div id="result">
+				</div>
+			</div>
+		  </div>
+		
+	</div>
+
+    <!-- <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <img src="" class="rounded me-2" alt="">
+          <strong class="me-auto">MyApp</strong>
+          <small>Now!</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          Configuración guardada correctamente.
+        </div>
+      </div>
+    </div> -->
+    <script>
+      const form = document.getElementById('configForm');
+        form.addEventListener('submit', function(event) {
+			event.preventDefault();
+			// Get values form
+			const input = document.getElementById('jsonConfig').value;
+
+			const lines = input.split('\n')
+			const extraConfig = {}
+
+			lines.forEach((line) => {
+				const [path, value] = line.trim().split('*,*')
+				const keys = path.split('.')
+				let currentObject = extraConfig
+				for (let i = 0; i < keys.length - 1; i++) {
+					const key = keys[i]
+					if (!currentObject[key]) {
+						currentObject[key] = {}
+					}
+					currentObject = currentObject[key]
+				}
+				const lastKey = keys[keys.length - 1]
+				currentObject[lastKey] = parseValue(value)
+			})
+
+          	// toastBootstrap.show()
+			document.getElementById('result').innerHTML = JSON.stringify(extraConfig)
+
+
+        });
+
+		const parseValue = function (value) {
+		// Convert the string value to the appropriate data type (e.g., boolean, number, array, etc.)
+		if (value === 'true' || value === 'false') {
+			return value === 'true'
+		} else if (!isNaN(value)) {
+			return Number(value)
+		}
+		return value
+		}
+    </script>
+  </body>
+</html>
