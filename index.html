@@ -30,8 +30,11 @@
 		<h3 id="formTitle">Json Generator</h3>
 		<form id="configForm" class="row g-3">
 			<div class="input-group">
-				<span class="input-group-text">Path*,*value</span>
-				<textarea id="jsonConfig" class="form-control" aria-label="EndUserSetting" style="height: 200px;"></textarea>
+				<span class="input-group-text">
+					Path*,*value
+					</span>
+				<textarea id="jsonConfig" class="form-control" aria-label="EndUserSetting" style="height: 200px;">
+				</textarea>
 			  </div>
 		  <div class="row g-3">
 			<div class="col-md-3">
@@ -63,8 +66,10 @@
       </div>
     </div> -->
     <script>
-      const form = document.getElementById('configForm');
-        form.addEventListener('submit', function(event) {
+		document.addEventListener('DOMContentLoaded', function() {
+			document.getElementById('jsonConfig').value = 'try.with.example*,*now\r\ntry.now*,*true'
+			const form = document.getElementById('configForm');
+			form.addEventListener('submit', function(event) {
 			event.preventDefault();
 			// Get values form
 			const input = document.getElementById('jsonConfig').value;
@@ -91,7 +96,7 @@
 			document.getElementById('result').innerHTML = JSON.stringify(extraConfig)
 
 
-        });
+        })
 
 		const parseValue = function (value) {
 		// Convert the string value to the appropriate data type (e.g., boolean, number, array, etc.)
@@ -102,6 +107,8 @@
 		}
 		return value
 		}
+		})
+
     </script>
   </body>
 </html>
