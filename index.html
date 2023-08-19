@@ -70,6 +70,7 @@
 				load('views/jsongenerator.html', container).then(() => {
 					const newSrc = document.createElement('script');
 					newSrc.setAttribute('id', 'scrDinamyc')
+					newSrc.setAttribute('src', 'src/generator.js')
 					document.body.appendChild(newSrc)
 				})
 			})
