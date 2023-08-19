@@ -160,7 +160,6 @@ fakerForm.addEventListener('submit', function(event) {
         if (checkbox.checked) {
             let text = checkbox.value
             text = text.split('.')
-            console.log(text[0])
             if (!values[text[0].toLowerCase()]) {
                 values[text[0].toLowerCase()] = []
             }
@@ -192,7 +191,11 @@ fakerForm.addEventListener('submit', function(event) {
     for (const property in data) {
         for (const item of data[property]) {
             sum = sum + 1
-            line = line + `${faker[property][item]()}${(sum == cols)?'\r\n':separator.value}`
+            let itemData = faker[property][item]()
+            if (property == 'date' && typeof itemData == 'object'){
+                itemData = itemData.toISOString()
+            }
+            line = line + `${itemData}${(sum == cols)?'\r\n':separator.value}`
         }
     }
     sum = 0
@@ -205,7 +208,7 @@ fakerForm.addEventListener('submit', function(event) {
 
     function copyData(filename, text) {
         var element = document.createElement('a');
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(text));
         element.setAttribute('download', filename);
         element.style.display = 'none';
         document.body.appendChild(element);
