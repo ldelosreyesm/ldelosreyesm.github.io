@@ -1,0 +1,58 @@
+<h3 id="formTitle">CSV Faker Data Generator</h3>
+<form id="configForm" class="row g-3">
+    <div class="">
+        <input type="checkbox" class="btn-check" id="btn-check-1" autocomplete="off">
+        <label class="btn btn-primary" for="btn-check-1">Person</label>
+        <input type="checkbox" class="btn-check" id="btn-check-2" autocomplete="off">
+        <label class="btn btn-primary" for="btn-check-2">Date</label>
+        <input type="checkbox" class="btn-check" id="btn-check-3" autocomplete="off">
+        <label class="btn btn-primary" for="btn-check-3">Location</label>
+        <input type="checkbox" class="btn-check" id="btn-check-4" autocomplete="off">
+        <label class="btn btn-primary" for="btn-check-4">Commerce</label>
+        <input type="checkbox" class="btn-check" id="btn-check-5" autocomplete="off">
+        <label class="btn btn-primary" for="btn-check-5">Music</label>
+    </div>
+    <div class="card row g-3">
+        <div class="card-body" style="display:flex; flex-wrap: wrap;">
+            <div id="options" style="display: flex; flex-direction: row; flex-wrap: wrap;">
+                <!-- <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                    Checked checkbox
+                    </label>
+                </div>
+                <div class="form-check" style="margin-right: 10px;">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Default checkbox
+                    </label>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="amount" class="col-form-label">How many?</label>
+        </div>
+        <div class="col-auto">
+          <input type="number" id="amount" class="form-control" aria-describedby="", value="10">
+        </div>
+        <div class="col-auto">
+        </div>
+    </div>
+    
+    <div class="row g-3">
+    <div class="col-md-3">
+        <button type="submit" class="btn btn-primary">Generate</button>
+    </div>
+    </div>
+</form>
+<br>
+<div class="card row g-3">
+    <div class="card-body">
+        <div id="result">
+            <textarea id="output" class="form-control" aria-label="EndUserSetting" style="height: 200px;">
+            </textarea>
+        </div>
+    </div>
+</div>
