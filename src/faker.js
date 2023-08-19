@@ -7,6 +7,7 @@ const locationCheck = document.getElementById('btn-check-3');
 const commerceCheck = document.getElementById('btn-check-4');
 const musicCheck = document.getElementById('btn-check-5');
 const amount = document.getElementById('amount');
+const separator = document.getElementById('separator');
 const options = document.getElementById('options');
 let html = ''
 personCheck.addEventListener("change", async function() {
@@ -161,7 +162,6 @@ form.addEventListener('submit', function(event) {
             text = text.split('.')
             console.log(text[0])
             if (!values[text[0].toLowerCase()]) {
-                console.log('NO EXISTE')
                 values[text[0].toLowerCase()] = []
             }
             values[text[0].toLowerCase()].push(text[1])
@@ -181,7 +181,7 @@ form.addEventListener('submit', function(event) {
     for (const property in data) {
         for (const item of data[property]) {
             sum = sum + 1
-            line = line + `${item}${(sum == cols)?'\r\n':', '}`
+            line = line + `${item}${(sum == cols)?'\r\n':separator.value}`
         }
     }
     console.log(cols)
@@ -193,7 +193,7 @@ form.addEventListener('submit', function(event) {
     for (const property in data) {
         for (const item of data[property]) {
             sum = sum + 1
-            line = line + `${faker[property][item]()}${(sum == cols)?'\r\n':', '}`
+            line = line + `${faker[property][item]()}${(sum == cols)?'\r\n':separator.value}`
         }
     }
     sum = 0
