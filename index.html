@@ -45,25 +45,37 @@
       </div>
     </div> -->
 	<script src="src/base.js"></script>
+	<script src="src/global.js" type="module"></script>
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 			const container = document.getElementById('maincontainer');
 			const fakerLink = document.getElementById('fakerLink');
 			const generatorLink = document.getElementById('generatorLink');
 			fakerLink.addEventListener('click', function(event) {
+				event.preventDefault();
+				if (document.getElementById('scrDinamyc')) document.getElementById('scrDinamyc').remove()
 				console.log('voy pa faker')
-				load('views/faker.html', container)
-				scrDinamyc.setAttribute('src', 'src/faker.js')
+				load('views/faker.html', container).then(() => {
+					const newSrc = document.createElement('script');
+					newSrc.setAttribute('id', 'scrDinamyc')
+					newSrc.setAttribute('src', 'src/faker.js')
+					// newSrc.setAttribute('type', 'module')
+					document.body.appendChild(newSrc)
+				})
 			})
 			generatorLink.addEventListener('click', function(event) {
+				event.preventDefault();
+				if (document.getElementById('scrDinamyc')) document.getElementById('scrDinamyc').remove()
 				console.log('voy pa generator')
-				load('views/jsongenerator.html', container)
-				const scrDinamyc = document.getElementById('scrDinamyc');
-				scrDinamyc.setAttribute('src', 'src/generator.js')
+				load('views/jsongenerator.html', container).then(() => {
+					const newSrc = document.createElement('script');
+					newSrc.setAttribute('id', 'scrDinamyc')
+					document.body.appendChild(newSrc)
+				})
 			})
 		})
 	</script>
-	<script id="scrDinamyc" type="module"></script>
+	<!-- <script id="scrDinamyc" type="module"></script> -->
     <!-- <script src="src/index.js"></script> -->
   </body>
 </html>

@@ -1,6 +1,6 @@
-
-import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
-const form = document.getElementById('configForm');
+(function () {
+console.log('Load faker...')
+const fakerForm = document.getElementById('fakerForm');
 const personCheck = document.getElementById('btn-check-1');
 const dateCheck = document.getElementById('btn-check-2');
 const locationCheck = document.getElementById('btn-check-3');
@@ -9,7 +9,9 @@ const musicCheck = document.getElementById('btn-check-5');
 const amount = document.getElementById('amount');
 const separator = document.getElementById('separator');
 const options = document.getElementById('options');
+const btnExport = document.getElementById('export');
 let html = ''
+
 personCheck.addEventListener("change", async function() {
     const items = await loadData('src/data/options.json')
     html = options.innerHTML
@@ -147,10 +149,8 @@ musicCheck.addEventListener("change", async function() {
         }
     }
 });
-// const randomName = faker.person.fullName();
-// const randomEmail = faker.internet.email();
 
-form.addEventListener('submit', function(event) {
+fakerForm.addEventListener('submit', function(event) {
     event.preventDefault();
     // Get values form
     const checkboxes = document.querySelectorAll(".form-check-input");
@@ -165,7 +165,6 @@ form.addEventListener('submit', function(event) {
                 values[text[0].toLowerCase()] = []
             }
             values[text[0].toLowerCase()].push(text[1])
-            // console.log(faker[text[0].toLowerCase()][text[1]]())
         }
         
     });
@@ -202,4 +201,22 @@ form.addEventListener('submit', function(event) {
     console.log(line)
       // toastBootstrap.show()
     document.getElementById('output').value = line
+
+
+    function copyData(filename, text) {
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+    }
+    // Start file download.
+    btnExport.addEventListener("click", function () {
+    var text = document.getElementById("output").value;
+    var filename = "toExport.txt";
+    copyData(filename, text);
+    }, false);
 })
+})();

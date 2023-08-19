@@ -1,4 +1,5 @@
-// document.addEventListener('DOMContentLoaded', function() {
+//document.addEventListener('DOMContentLoaded', function() {
+(function () {
     document.getElementById('jsonConfig').value = 'try.with.example*,*now\r\ntry.now*,*true'
     const form = document.getElementById('configForm');
     form.addEventListener('submit', function(event) {
@@ -8,7 +9,6 @@
 
     const lines = input.split('\n')
     const extraConfig = {}
-
     lines.forEach((line) => {
         const [path, value] = line.trim().split('*,*')
         const keys = path.split('.')
@@ -39,4 +39,4 @@ if (value === 'true' || value === 'false') {
 }
 return value
 }
-// })
+})();
