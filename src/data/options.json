@@ -50,5 +50,10 @@
     "music":[
         "genre",
         "songName"
+    ],
+    "number":[
+        "binary",
+        "float",
+        "int"
     ]
 }
