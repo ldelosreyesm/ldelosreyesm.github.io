@@ -55,5 +55,16 @@
         "binary",
         "float",
         "int"
+    ],
+    "vehicle":[
+        "bicycle",
+        "color",
+        "fuel",
+        "manufacturer",
+        "model",
+        "type",
+        "vehicle",
+        "vin",
+        "vrm"
     ]
 }

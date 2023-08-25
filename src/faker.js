@@ -7,6 +7,7 @@
     const commerceCheck = document.getElementById('btn-check-4');
     const musicCheck = document.getElementById('btn-check-5');
     const numberCheck = document.getElementById('btn-check-6');
+    const vehicleCheck = document.getElementById('btn-check-7');
     const amount = document.getElementById('amount');
     const separator = document.getElementById('separator');
     const options = document.getElementById('options');
@@ -178,6 +179,34 @@
         }
     });
 
+    vehicleCheck.addEventListener("change", async function() {
+        const items = await loadData('src/data/options.json')
+        const attPrefix = 'vehicle'
+        html = options.innerHTML
+        console.log(this.checked);
+        if (this.checked) {
+            console.log("Default checkbox is checked");
+            console.log(items);
+            
+            for (let i = 0; i < items.vehicle.length; i++) {
+                html = html + `<div id="${attPrefix}-${i}" class="form-check" style="margin-right: 10px; flex-basis: calc(30% - 10px); margin: 5px;">
+                <input class="form-check-input" type="checkbox" value="Vehicle.${items.vehicle[i]}" id="${attPrefix}cb-${i}" >
+                <label class="form-check-label" for="${attPrefix}cb-${i}">
+                Vehicle.${items.vehicle[i]}
+                </label>
+            </div>`
+            options.innerHTML = html
+            }
+            html = ''
+        } else {
+            console.log("Default checkbox is unchecked");
+            const elems = document.querySelectorAll(`div[id^="${attPrefix}-"]`)
+            for (const elem of elems) {
+                elem.remove()
+            }
+        }
+    });
+
     fakerForm.addEventListener('submit', function(event) {
         event.preventDefault();
         // Get values form
@@ -200,7 +229,7 @@
         const data = values
         let sum = 0
         let cols = 0
-        let line = ''
+        let line = `rowId${separator.value}`//''
         for (const property in data) {
         cols = cols + data[property].length
         }
@@ -216,17 +245,18 @@
         
         sum = 0
         for (let i = 0; i < parseInt(amount.value); i++) {
-        for (const property in data) {
-            for (const item of data[property]) {
-                sum = sum + 1
-                let itemData = faker[property][item]((item === 'int')?100:{})
-                if (property == 'date' && typeof itemData == 'object'){
-                    itemData = itemData.toISOString()
+            line = line + `${i + 1}${separator.value}`
+            for (const property in data) {
+                for (const item of data[property]) {
+                    sum = sum + 1
+                    let itemData = faker[property][item]((item === 'int')?100:{})
+                    if (property == 'date' && typeof itemData == 'object'){
+                        itemData = itemData.toISOString()
+                    }
+                    line = line + `${itemData}${(sum == cols)?'\r\n':separator.value}`
                 }
-                line = line + `${itemData}${(sum == cols)?'\r\n':separator.value}`
             }
-        }
-        sum = 0
+            sum = 0
         }
 
         console.log(line)
