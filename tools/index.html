@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LDT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  </head>
+  <body id="main">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">LDTools</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+				<a id="generatorLink" class="nav-link active" aria-current="page" href="#">JsonGen</a>
+				</li>
+				<li class="nav-item">
+					<a id="fakerLink" class="nav-link active" aria-current="page" href="#">FakerDataGen</a>
+				</li>
+			</ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+	<div id="maincontainer" class="container">
+	</div>
+    <!-- <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <img src="" class="rounded me-2" alt="">
+          <strong class="me-auto">MyApp</strong>
+          <small>Now!</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          Configuración guardada correctamente.
+        </div>
+      </div>
+    </div> -->
+	<script src="src/base.js"></script>
+	<script src="src/global.js" type="module"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', async function() {
+			const container = document.getElementById('maincontainer');
+			const fakerLink = document.getElementById('fakerLink');
+			const generatorLink = document.getElementById('generatorLink');
+			await goHome()
+			fakerLink.addEventListener('click', function(event) {
+				event.preventDefault();
+				if (document.getElementById('scrDinamyc')) document.getElementById('scrDinamyc').remove()
+				load('views/faker.html', container).then(() => {
+					const newSrc = document.createElement('script');
+					newSrc.setAttribute('id', 'scrDinamyc')
+					newSrc.setAttribute('src', 'src/faker.js')
+					// newSrc.setAttribute('type', 'module')
+					document.body.appendChild(newSrc)
+				})
+			})
+			generatorLink.addEventListener('click', function(event) {
+				event.preventDefault();
+				if (document.getElementById('scrDinamyc')) document.getElementById('scrDinamyc').remove()
+				load('views/jsongenerator.html', container).then(() => {
+					const newSrc = document.createElement('script');
+					newSrc.setAttribute('id', 'scrDinamyc')
+					newSrc.setAttribute('src', 'src/generator.js')
+					document.body.appendChild(newSrc)
+				})
+			})
+			async function goHome() {
+				if (document.getElementById('scrDinamyc')) document.getElementById('scrDinamyc').remove()
+				await load('views/welcome.html', container)
+			}
+		})
+	</script>
+	<!-- <script id="scrDinamyc" type="module"></script> -->
+    <!-- <script src="src/index.js"></script> -->
+  </body>
+</html>

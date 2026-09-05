@@ -1,85 +1,554 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>LDT</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-  </head>
-  <body id="main">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">LDTools</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li class="nav-item">
-				<a id="generatorLink" class="nav-link active" aria-current="page" href="#">JsonGen</a>
-				</li>
-				<li class="nav-item">
-					<a id="fakerLink" class="nav-link active" aria-current="page" href="#">FakerDataGen</a>
-				</li>
-			</ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
-        </div>
-      </div>
-    </nav>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Luis De Los Reyes — QA Automation Engineer</title>
+<meta name="description" content="Portafolio de Luis De Los Reyes — QA Automation Engineer especializado en Selenium, WebdriverIO, Appium y automatización asistida por IA. Creador de SARA y Syncgle." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-	<div id="maincontainer" class="container">
-	</div>
-    <!-- <div class="toast-container position-fixed bottom-0 end-0 p-3">
-      <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-          <img src="" class="rounded me-2" alt="">
-          <strong class="me-auto">MyApp</strong>
-          <small>Now!</small>
-          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+  :root {
+    --bg:      #0b1017;
+    --bg-alt:  #10161f;
+    --bg-card: #10161f;
+    --bg-code: #080b11;
+    --bd:      #1c2531;
+    --bd-s:    #2a3644;
+    --text:    #e7ebf0;
+    --sub:     #b3bdc9;
+    --muted:   #7d8b9b;
+    --dim:     #4c5867;
+    --p:       #5b6ef5;
+    --p-h:     #4756d6;
+    --pt:      #8b97ff;
+    --sara:    #147878;
+    --sara-t:  #3dbdbd;
+    --sync:    #5b6ef5;
+    --sync-t:  #8b97ff;
+  }
+
+  html { font-size: 15px; scroll-behavior: smooth; }
+  body { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
+  a { color: var(--pt); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code, .mono { font-family: 'JetBrains Mono', monospace; }
+  section { padding: 72px 24px; border-bottom: 1px solid var(--bd); }
+  .inner { max-width: 1080px; margin: 0 auto; }
+  .eyebrow { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); margin-bottom: 10px; }
+  h2 { font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 800; letter-spacing: -.03em; color: var(--text); margin-bottom: 12px; }
+  .sec-desc { font-size: .9rem; color: var(--muted); max-width: 560px; line-height: 1.75; margin-bottom: 40px; }
+
+  body.lang-es [data-lang="en"] { display: none !important; }
+  body.lang-en [data-lang="es"] { display: none !important; }
+
+  /* ── NAV ─────────────────────────── */
+  nav { border-bottom: 1px solid var(--bd); background: rgba(11,16,23,.85); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 30; }
+  .nav-i { max-width: 1080px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; height: 58px; gap: 20px; }
+  .nav-logo { font-size: .95rem; font-weight: 800; color: var(--text); letter-spacing: -.01em; margin-right: auto; }
+  .nav-logo span { color: var(--pt); }
+  .nav-links { display: flex; gap: 22px; }
+  .nav-links a { font-size: .82rem; font-weight: 500; color: var(--muted); }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+  .lang-switch { display: flex; border: 1px solid var(--bd-s); border-radius: 6px; overflow: hidden; }
+  .lang-btn { font-size: .72rem; font-weight: 700; padding: 6px 11px; background: transparent; color: var(--muted); border: none; cursor: pointer; font-family: inherit; }
+  .lang-btn.on { background: var(--p); color: #fff; }
+  @media (max-width: 700px) { .nav-links { display: none; } }
+
+  /* ── HERO ────────────────────────── */
+  .hero { padding: 88px 24px 64px; }
+  .hero-inner { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: center; }
+  @media (max-width: 640px) { .hero-inner { grid-template-columns: 1fr; text-align: center; } .hero-ctas, .hero-badges { justify-content: center; } }
+  .avatar { width: 96px; height: 96px; border-radius: 50%; background: linear-gradient(135deg, var(--p), var(--sara)); display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 800; color: #fff; flex-shrink: 0; letter-spacing: -.02em; box-shadow: 0 8px 32px rgba(91,110,245,.25); }
+  .hero-eyebrow { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--pt); margin-bottom: 14px; }
+  .hero h1 { font-size: clamp(1.9rem, 4.5vw, 2.7rem); font-weight: 800; line-height: 1.12; letter-spacing: -.03em; margin-bottom: 14px; }
+  .hero-sub { font-size: .975rem; color: var(--muted); line-height: 1.8; margin-bottom: 26px; max-width: 560px; }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
+  .btn-p { display: inline-block; background: var(--p); color: #fff; font-size: .85rem; font-weight: 600; padding: 11px 22px; border: 1px solid var(--p); border-radius: 6px; transition: background .15s; }
+  .btn-p:hover { background: var(--p-h); border-color: var(--p-h); text-decoration: none; }
+  .btn-g { display: inline-block; background: transparent; color: var(--sub); font-size: .85rem; font-weight: 500; padding: 11px 20px; border: 1px solid var(--bd-s); border-radius: 6px; transition: background .15s; }
+  .btn-g:hover { background: var(--bg-alt); text-decoration: none; }
+  .hero-badges { display: flex; gap: 16px; flex-wrap: wrap; font-size: .8rem; color: var(--muted); }
+  .hero-badges a { color: var(--muted); }
+  .hero-badges a:hover { color: var(--pt); text-decoration: none; }
+
+  /* ── ABOUT ───────────────────────── */
+  .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; }
+  @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-text p { font-size: .92rem; color: var(--sub); line-height: 1.85; margin-bottom: 16px; }
+  .fact-list { border: 1px solid var(--bd); border-radius: 8px; overflow: hidden; }
+  .fact { display: flex; justify-content: space-between; gap: 16px; padding: 13px 16px; border-bottom: 1px solid var(--bd); font-size: .82rem; }
+  .fact:last-child { border-bottom: none; }
+  .fact-k { color: var(--dim); font-weight: 600; }
+  .fact-v { color: var(--sub); text-align: right; }
+
+  /* ── EXPERIENCE ──────────────────── */
+  .tl2 { position: relative; padding-left: 26px; }
+  .tl2::before { content: ''; position: absolute; left: 5px; top: 6px; bottom: 6px; width: 1px; background: var(--bd-s); }
+  .tl2-item { position: relative; padding-bottom: 34px; }
+  .tl2-item:last-child { padding-bottom: 0; }
+  .tl2-item::before { content: ''; position: absolute; left: -26px; top: 4px; width: 11px; height: 11px; border-radius: 50%; background: var(--bg); border: 2px solid var(--p); }
+  .tl2-date { font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--dim); margin-bottom: 4px; }
+  .tl2-role { font-size: 1.02rem; font-weight: 800; color: var(--text); margin-bottom: 2px; }
+  .tl2-co { font-size: .85rem; font-weight: 600; color: var(--pt); margin-bottom: 10px; }
+  .tl2-list { list-style: none; }
+  .tl2-list li { font-size: .85rem; color: var(--muted); padding: 5px 0 5px 16px; position: relative; line-height: 1.6; }
+  .tl2-list li::before { content: ''; position: absolute; left: 0; top: 12px; width: 4px; height: 4px; border-radius: 50%; background: var(--dim); }
+
+  /* ── PROJECTS ────────────────────── */
+  .proj-card { border: 1px solid var(--bd); border-radius: 10px; overflow: hidden; margin-bottom: 28px; background: var(--bg-card); }
+  .proj-card:last-child { margin-bottom: 0; }
+  .proj-shot { display: block; width: 100%; border-bottom: 1px solid var(--bd); background: var(--bg-code); }
+  .proj-shot img { display: block; width: 100%; height: auto; }
+  .proj-body { padding: 30px 32px; }
+  .proj-top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .proj-logo { width: 30px; height: 30px; border-radius: 6px; object-fit: cover; }
+  .proj-name { font-size: 1.15rem; font-weight: 800; color: var(--text); letter-spacing: -.02em; }
+  .proj-tag { font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; }
+  .proj-tag.sara { color: var(--sara-t); border: 1px solid #1e6060; background: rgba(20,120,120,.08); }
+  .proj-tag.sync { color: var(--sync-t); border: 1px solid #2d3a80; background: rgba(91,110,245,.1); }
+  .proj-desc { font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: 20px; max-width: 640px; }
+  .proj-feats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 24px; margin-bottom: 20px; }
+  @media (max-width: 560px) { .proj-feats { grid-template-columns: 1fr; } }
+  .proj-feats li { list-style: none; font-size: .82rem; color: var(--sub); padding: 5px 0 5px 16px; position: relative; }
+  .proj-feats li::before { content: ''; position: absolute; left: 0; top: 12px; width: 4px; height: 4px; border-radius: 50%; }
+  .proj-card.is-sara .proj-feats li::before { background: var(--sara-t); }
+  .proj-card.is-sync .proj-feats li::before { background: var(--sync-t); }
+  .stack-row { display: flex; gap: 7px; flex-wrap: wrap; }
+  .stack-chip { font-size: .72rem; font-weight: 600; color: var(--muted); background: var(--bg-code); border: 1px solid var(--bd); padding: 4px 10px; border-radius: 5px; }
+
+  /* ── SKILLS ──────────────────────── */
+  .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border: 1px solid var(--bd); border-radius: 8px; overflow: hidden; }
+  @media (max-width: 620px) { .skills-grid { grid-template-columns: 1fr; } }
+  .skill-cell { padding: 22px 26px; border-right: 1px solid var(--bd); border-bottom: 1px solid var(--bd); }
+  .skill-cell:nth-child(2n) { border-right: none; }
+  @media (max-width: 620px) { .skill-cell { border-right: none; } }
+  .skills-grid .skill-cell:nth-last-child(-n+2) { border-bottom: none; }
+  @media (max-width: 620px) { .skills-grid .skill-cell:last-child { border-bottom: none; } }
+  .skill-h { font-size: .78rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--dim); margin-bottom: 12px; }
+  .skill-chips { display: flex; gap: 7px; flex-wrap: wrap; }
+  .chip { font-size: .8rem; color: var(--sub); background: var(--bg-code); border: 1px solid var(--bd); padding: 5px 11px; border-radius: 5px; }
+
+  /* ── EDUCATION ───────────────────── */
+  .edu-item { display: flex; justify-content: space-between; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--bd); }
+  .edu-item:last-child { border-bottom: none; }
+  .edu-name { font-size: .92rem; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+  .edu-inst { font-size: .82rem; color: var(--muted); }
+  .edu-date { font-size: .78rem; color: var(--dim); white-space: nowrap; font-weight: 600; }
+
+  /* ── CONTACT / FOOTER ────────────── */
+  .contact-sec { text-align: center; }
+  .contact-sec .eyebrow { text-align: center; }
+  .contact-sec h2 { margin-bottom: 16px; }
+  .contact-sec p { max-width: 480px; margin: 0 auto 30px; }
+  .contact-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  footer { padding: 24px; }
+  .foot-inner { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .foot-copy { font-size: .78rem; color: var(--dim); }
+  .foot-links { display: flex; gap: 18px; }
+  .foot-links a { font-size: .78rem; color: var(--muted); }
+  .foot-links a:hover { color: var(--text); text-decoration: none; }
+</style>
+</head>
+<body class="lang-es">
+
+<nav>
+  <div class="nav-i">
+    <span class="nav-logo">Luis <span>De Los Reyes</span></span>
+    <div class="nav-links">
+      <a href="#about" data-lang="es">Sobre m&iacute;</a>
+      <a href="#about" data-lang="en">About</a>
+      <a href="#experience" data-lang="es">Experiencia</a>
+      <a href="#experience" data-lang="en">Experience</a>
+      <a href="#projects" data-lang="es">Proyectos</a>
+      <a href="#projects" data-lang="en">Projects</a>
+      <a href="#skills" data-lang="es">Habilidades</a>
+      <a href="#skills" data-lang="en">Skills</a>
+      <a href="#contact" data-lang="es">Contacto</a>
+      <a href="#contact" data-lang="en">Contact</a>
+    </div>
+    <div class="lang-switch">
+      <button class="lang-btn" data-set-lang="es">ES</button>
+      <button class="lang-btn" data-set-lang="en">EN</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="border-bottom: 1px solid var(--bd);">
+  <div class="hero-inner">
+    <div class="avatar">LR</div>
+    <div>
+      <p class="hero-eyebrow" data-lang="es">QA Automation Engineer &middot; Constructor de productos</p>
+      <p class="hero-eyebrow" data-lang="en">QA Automation Engineer &middot; Product Builder</p>
+      <h1>Luis De Los Reyes</h1>
+      <p class="hero-sub" data-lang="es">Ingeniero de automatizaci&oacute;n de pruebas con m&aacute;s de 8 a&ntilde;os de experiencia en desarrollo y QA. Automatizo software con Selenium, WebdriverIO y Appium, y dise&ntilde;o flujos de pruebas asistidos por IA. Fuera del trabajo, construyo productos propios de principio a fin: SARA y Syncgle.</p>
+      <p class="hero-sub" data-lang="en">Automation Test Engineer with 8+ years of experience in software development and QA. I automate software with Selenium, WebdriverIO and Appium, and design AI-assisted testing workflows. Outside of work, I build my own products end to end: SARA and Syncgle.</p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-p" data-lang="es">Ver proyectos</a>
+        <a href="#projects" class="btn-p" data-lang="en">View projects</a>
+        <a href="#contact" class="btn-g" data-lang="es">Contactarme</a>
+        <a href="#contact" class="btn-g" data-lang="en">Get in touch</a>
+      </div>
+      <div class="hero-badges">
+        <span data-lang="es">📍 Barranquilla, Colombia</span>
+        <span data-lang="en">📍 Barranquilla, Colombia</span>
+        <a href="https://linkedin.com/in/luisdelosreyes/" target="_blank" rel="noopener">🔗 linkedin.com/in/luisdelosreyes</a>
+        <a class="js-email-link" href="javascript:void(0)">✉️ <span class="js-email-text" data-lang="es">Revelar correo</span><span class="js-email-text" data-lang="en">Reveal email</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="inner about-grid">
+    <div class="about-text">
+      <p class="eyebrow" data-lang="es">Sobre m&iacute;</p>
+      <p class="eyebrow" data-lang="en">About</p>
+      <p data-lang="es">Soy QA Automation Engineer en <strong>Qrvey</strong> desde 2020, donde automatizo pruebas con Selenium, WebdriverIO y Appium, ejecuto pruebas de rendimiento con Sitespeed.io y Artillery.io, e integro los resultados de las ejecuciones con Slack vía CI/CD. Tambi&eacute;n contribuyo a un framework interno de QA asistido por IA (Node.js + Playwright + Playwright MCP), donde un agente explora la aplicaci&oacute;n a partir de especificaciones y genera pruebas de regresi&oacute;n reproducibles, con seguimiento de cobertura sobre cerca de 1.000 casos planificados.</p>
+      <p data-lang="en">I've been a QA Automation Engineer at <strong>Qrvey</strong> since 2020, automating tests with Selenium, WebdriverIO and Appium, running performance tests with Sitespeed.io and Artillery.io, and integrating test results with Slack via CI/CD. I also contribute to an in-house AI-assisted QA framework (Node.js + Playwright + Playwright MCP), where an agent explores the app from feature specs and generates reproducible regression tests, tracking coverage across close to 1,000 planned test cases.</p>
+      <p data-lang="es">Antes de eso pas&eacute; varios a&ntilde;os en <strong>Ludycom S.A.</strong>, empezando en soporte de infraestructura y sistemas GIS, pasando por an&aacute;lisis y ejecuci&oacute;n de pruebas, hasta desarrollo de aplicaciones Android nativas. Ese recorrido &mdash;de campo a desarrollo a QA&mdash; es la misma mezcla que uso hoy para construir mis propios productos: SARA (gesti&oacute;n acad&eacute;mica) y Syncgle (gesti&oacute;n de trabajo en campo).</p>
+      <p data-lang="en">Before that I spent several years at <strong>Ludycom S.A.</strong>, starting in infrastructure and GIS support, moving through test analysis and execution, up to native Android development. That path &mdash;from the field to development to QA&mdash; is the same mix I use today to build my own products: SARA (academic management) and Syncgle (field work management).</p>
+    </div>
+    <div class="fact-list">
+      <div class="fact"><span class="fact-k" data-lang="es">Rol actual</span><span class="fact-k" data-lang="en">Current role</span><span class="fact-v" data-lang="es">Senior Automated Tester, Qrvey</span><span class="fact-v" data-lang="en">Senior Automated Tester, Qrvey</span></div>
+      <div class="fact"><span class="fact-k" data-lang="es">Experiencia</span><span class="fact-k" data-lang="en">Experience</span><span class="fact-v" data-lang="es">+8 a&ntilde;os en desarrollo y QA</span><span class="fact-v" data-lang="en">8+ years in dev &amp; QA</span></div>
+      <div class="fact"><span class="fact-k" data-lang="es">Educaci&oacute;n</span><span class="fact-k" data-lang="en">Education</span><span class="fact-v" data-lang="es">Ing. de Sistemas, UNAD</span><span class="fact-v" data-lang="en">Systems Engineering, UNAD</span></div>
+      <div class="fact"><span class="fact-k" data-lang="es">Idiomas</span><span class="fact-k" data-lang="en">Languages</span><span class="fact-v" data-lang="es">Espa&ntilde;ol (nativo) &middot; Ingl&eacute;s (B1)</span><span class="fact-v" data-lang="en">Spanish (native) &middot; English (B1)</span></div>
+      <div class="fact"><span class="fact-k" data-lang="es">Ubicaci&oacute;n</span><span class="fact-k" data-lang="en">Location</span><span class="fact-v" data-lang="es">Barranquilla, Colombia</span><span class="fact-v" data-lang="en">Barranquilla, Colombia</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="inner">
+    <p class="eyebrow" data-lang="es">Experiencia</p>
+    <p class="eyebrow" data-lang="en">Experience</p>
+    <h2 data-lang="es">Trayectoria profesional</h2>
+    <h2 data-lang="en">Professional journey</h2>
+    <p class="sec-desc" data-lang="es">M&aacute;s de una d&eacute;cada movi&eacute;ndome entre soporte t&eacute;cnico, desarrollo y aseguramiento de calidad.</p>
+    <p class="sec-desc" data-lang="en">Over a decade moving between technical support, development and quality assurance.</p>
+
+    <div class="tl2">
+      <div class="tl2-item">
+        <div class="tl2-date" data-lang="es">2020 &mdash; Presente</div>
+        <div class="tl2-date" data-lang="en">2020 &mdash; Present</div>
+        <div class="tl2-role" data-lang="es">Senior Automated Tester</div>
+        <div class="tl2-role" data-lang="en">Senior Automated Tester</div>
+        <div class="tl2-co">Qrvey &middot; Barranquilla, Atl&aacute;ntico</div>
+        <ul class="tl2-list">
+          <li data-lang="es">Automatizaci&oacute;n de casos de prueba con Selenium, WebdriverIO y Appium para asegurar la calidad del software.</li>
+          <li data-lang="en">Automating test cases with Selenium, WebdriverIO and Appium to ensure software quality.</li>
+          <li data-lang="es">Pruebas de rendimiento con Sitespeed.io y Artillery.io bajo distintas cargas y condiciones.</li>
+          <li data-lang="en">Performance testing with Sitespeed.io and Artillery.io under various loads and conditions.</li>
+          <li data-lang="es">Registro y seguimiento de defectos en Jira, e integraci&oacute;n CI/CD con notificaciones a Slack.</li>
+          <li data-lang="en">Defect logging and tracking in Jira, plus CI/CD integration with Slack notifications.</li>
+          <li data-lang="es">Framework interno de QA asistido por IA (Node.js + Playwright + Playwright MCP): un agente explora la app desde especificaciones y genera pruebas de regresi&oacute;n reproducibles, con cobertura sobre ~1.000 casos.</li>
+          <li data-lang="en">In-house AI-assisted QA framework (Node.js + Playwright + Playwright MCP): an agent explores the app from specs and generates reproducible regression tests, tracking coverage across ~1,000 test cases.</li>
+        </ul>
+      </div>
+
+      <div class="tl2-item">
+        <div class="tl2-date" data-lang="es">Abr 2019 &mdash; Dic 2019</div>
+        <div class="tl2-date" data-lang="en">Apr 2019 &mdash; Dec 2019</div>
+        <div class="tl2-role" data-lang="es">Desarrollador de Aplicaciones Junior</div>
+        <div class="tl2-role" data-lang="en">Junior Application Developer</div>
+        <div class="tl2-co">Ludycom S.A. &middot; Barranquilla, Atl&aacute;ntico</div>
+        <ul class="tl2-list">
+          <li data-lang="es">Desarrollo nativo Android (Java), manejo de datos con SQLite e integraci&oacute;n de servicios REST.</li>
+          <li data-lang="en">Native Android development (Java), SQLite data management and REST API integration.</li>
+          <li data-lang="es">An&aacute;lisis, dise&ntilde;o, desarrollo y mantenimiento de soluciones para clientes internos y externos.</li>
+          <li data-lang="en">Analysis, design, development and maintenance of solutions for internal and external clients.</li>
+          <li data-lang="es">Levantamiento de requerimientos y documentaci&oacute;n t&eacute;cnica para el equipo de ejecuci&oacute;n.</li>
+          <li data-lang="en">Requirements gathering and technical documentation for the execution team.</li>
+        </ul>
+      </div>
+
+      <div class="tl2-item">
+        <div class="tl2-date" data-lang="es">Sep 2017 &mdash; Mar 2019</div>
+        <div class="tl2-date" data-lang="en">Sep 2017 &mdash; Mar 2019</div>
+        <div class="tl2-role" data-lang="es">Analista de Pruebas y Releases</div>
+        <div class="tl2-role" data-lang="en">Testing and Release Analyst</div>
+        <div class="tl2-co">Ludycom S.A. &middot; Barranquilla, Atl&aacute;ntico</div>
+        <ul class="tl2-list">
+          <li data-lang="es">Dise&ntilde;o y ejecuci&oacute;n de casos de prueba para aplicaciones web y m&oacute;viles, con reportes de ejecuci&oacute;n.</li>
+          <li data-lang="en">Test case design and execution for web and mobile applications, with execution reports.</li>
+          <li data-lang="es">Scripts de automatizaci&oacute;n con Appium y Selenium para Android.</li>
+          <li data-lang="en">Automation scripts with Appium and Selenium for Android.</li>
+        </ul>
+      </div>
+
+      <div class="tl2-item">
+        <div class="tl2-date" data-lang="es">May 2013 &mdash; Sep 2017</div>
+        <div class="tl2-date" data-lang="en">May 2013 &mdash; Sep 2017</div>
+        <div class="tl2-role" data-lang="es">Asistente GIS / Asistente de TI e Infraestructura</div>
+        <div class="tl2-role" data-lang="en">GIS Assistant / IT &amp; Infrastructure Assistant</div>
+        <div class="tl2-co">Ludycom S.A. &middot; Barranquilla, Atl&aacute;ntico</div>
+        <ul class="tl2-list">
+          <li data-lang="es">Digitalizaci&oacute;n e interpretaci&oacute;n de planos cartogr&aacute;ficos y soporte a actividades de campo.</li>
+          <li data-lang="en">Digitization and interpretation of cartographic plans and field survey support.</li>
+          <li data-lang="es">Soporte de la aplicaci&oacute;n SigGas para empresas de gas como Gases del Caribe, Surtigas, Efigas y Gases de la Guajira.</li>
+          <li data-lang="en">Application support (SigGas) for gas companies such as Gases del Caribe, Surtigas, Efigas and Gases de la Guajira.</li>
+          <li data-lang="es">T&eacute;cnico de planta y administrador de TI.</li>
+          <li data-lang="en">Plant technician and IT administrator.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="inner">
+    <p class="eyebrow" data-lang="es">Proyectos propios</p>
+    <p class="eyebrow" data-lang="en">Personal projects</p>
+    <h2 data-lang="es">Productos que dise&ntilde;&eacute; y constru&iacute; de principio a fin</h2>
+    <h2 data-lang="en">Products I designed and built end to end</h2>
+    <p class="sec-desc" data-lang="es">De la experiencia de campo (GIS, soporte t&eacute;cnico) y del oficio de QA nacieron estos dos productos: uno para instituciones educativas, otro para equipos de trabajo en terreno. Ambos est&aacute;n desplegados y en uso.</p>
+    <p class="sec-desc" data-lang="en">From field experience (GIS, technical support) and the craft of QA came these two products: one for educational institutions, one for field work teams. Both are deployed and in use.</p>
+
+    <!-- SARA -->
+    <div class="proj-card is-sara">
+      <div class="proj-shot">
+        <img src="assets/sara-logo.png" alt="SARA — Sistema Académico de Rendimiento y Aprendizaje" style="max-width:220px; margin:28px auto; display:block; border-radius: 12px;" />
+      </div>
+      <div class="proj-body">
+        <div class="proj-top">
+          <span class="proj-name">SARA</span>
+          <span class="proj-tag sara" data-lang="es">Sistema acad&eacute;mico</span>
+          <span class="proj-tag sara" data-lang="en">Academic system</span>
         </div>
-        <div class="toast-body">
-          Configuración guardada correctamente.
+        <p class="proj-desc" data-lang="es">SARA (Sistema Acad&eacute;mico de Rendimiento y Aprendizaje) centraliza calificaciones, asistencia y boletines para colegios y docentes independientes. Naci&oacute; entre 2017 y 2018 como proyecto de grado &mdash;entonces llamado SGA&mdash; mientras estudiaba An&aacute;lisis y Desarrollo de Sistemas de Informaci&oacute;n (ADSI) en el SENA, y en 2025&ndash;2026 pas&oacute; por una reescritura completa: nueva arquitectura, modelo multi-tenant y una versi&oacute;n simplificada para docentes que trabajan solos.</p>
+        <p class="proj-desc" data-lang="en">SARA (Academic Performance and Learning System) centralizes grades, attendance and report cards for schools and independent teachers. It started between 2017 and 2018 as a capstone project &mdash;then called SGA&mdash; while I was studying Information Systems Analysis and Development (ADSI) at SENA, and went through a full rewrite in 2025&ndash;2026: new architecture, multi-tenant model, and a simplified version for teachers working solo.</p>
+        <ul class="proj-feats">
+          <li data-lang="es">Roles diferenciados: Admin, Coordinador, Docente, Estudiante, Acudiente</li>
+          <li data-lang="en">Distinct roles: Admin, Coordinator, Teacher, Student, Guardian</li>
+          <li data-lang="es">Boletines por per&iacute;odo, curso y grado</li>
+          <li data-lang="en">Report cards by period, course and grade</li>
+          <li data-lang="es">Formularios de calificaci&oacute;n y asistencia por curso</li>
+          <li data-lang="en">Grading and attendance forms per course</li>
+          <li data-lang="es">M&oacute;dulo de an&aacute;lisis de riesgo acad&eacute;mico por estudiante</li>
+          <li data-lang="en">Per-student academic risk analysis module</li>
+          <li data-lang="es">SARA Express: modo simplificado para docentes independientes</li>
+          <li data-lang="en">SARA Express: simplified mode for independent teachers</li>
+        </ul>
+        <div class="stack-row">
+          <span class="stack-chip">Multi-tenant</span>
+          <span class="stack-chip">SaaS</span>
+          <span class="stack-chip" data-lang="es">Gesti&oacute;n acad&eacute;mica</span>
+          <span class="stack-chip" data-lang="en">Academic management</span>
         </div>
       </div>
-    </div> -->
-	<script src="src/base.js"></script>
-	<script src="src/global.js" type="module"></script>
-	<script>
-		document.addEventListener('DOMContentLoaded', async function() {
-			const container = document.getElementById('maincontainer');
-			const fakerLink = document.getElementById('fakerLink');
-			const generatorLink = document.getElementById('generatorLink');
-			await goHome()
-			fakerLink.addEventListener('click', function(event) {
-				event.preventDefault();
-				if (document.getElementById('scrDinamyc')) document.getElementById('scrDinamyc').remove()
-				load('views/faker.html', container).then(() => {
-					const newSrc = document.createElement('script');
-					newSrc.setAttribute('id', 'scrDinamyc')
-					newSrc.setAttribute('src', 'src/faker.js')
-					// newSrc.setAttribute('type', 'module')
-					document.body.appendChild(newSrc)
-				})
-			})
-			generatorLink.addEventListener('click', function(event) {
-				event.preventDefault();
-				if (document.getElementById('scrDinamyc')) document.getElementById('scrDinamyc').remove()
-				load('views/jsongenerator.html', container).then(() => {
-					const newSrc = document.createElement('script');
-					newSrc.setAttribute('id', 'scrDinamyc')
-					newSrc.setAttribute('src', 'src/generator.js')
-					document.body.appendChild(newSrc)
-				})
-			})
-			async function goHome() {
-				if (document.getElementById('scrDinamyc')) document.getElementById('scrDinamyc').remove()
-				await load('views/welcome.html', container)
-			}
-		})
-	</script>
-	<!-- <script id="scrDinamyc" type="module"></script> -->
-    <!-- <script src="src/index.js"></script> -->
-  </body>
+    </div>
+
+    <!-- SYNCGLE / FIELD WORK -->
+    <div class="proj-card is-sync">
+      <div class="proj-shot">
+        <img src="assets/syncgle-dashboard.png" alt="Dashboard de Syncgle con resumen de actividades por estado y por tipo" />
+      </div>
+      <div class="proj-body">
+        <div class="proj-top">
+          <img class="proj-logo" src="assets/syncgle-logo.png" alt="Syncgle" />
+          <span class="proj-name">Syncgle</span>
+          <span class="proj-tag sync" data-lang="es">Gesti&oacute;n de campo</span>
+          <span class="proj-tag sync" data-lang="en">Field work management</span>
+        </div>
+        <p class="proj-desc" data-lang="es">Syncgle (antes Field Work) es una plataforma SaaS multi-tenant para gestionar actividades de t&eacute;cnicos en campo: instalaciones, mantenimientos y reparaciones. Conecta un panel web para administradores y supervisores con una app m&oacute;vil para t&eacute;cnicos que sigue funcionando sin conexi&oacute;n, sincronizando autom&aacute;ticamente al recuperar la se&ntilde;al.</p>
+        <p class="proj-desc" data-lang="en">Syncgle (formerly Field Work) is a multi-tenant SaaS platform for managing field technicians' activities: installations, maintenance and repairs. It connects a web panel for admins and supervisors with a mobile app for technicians that keeps working offline, syncing automatically once connection is back.</p>
+        <ul class="proj-feats">
+          <li data-lang="es">Formularios din&aacute;micos por tipo de actividad (texto, fotos, firma, GPS)</li>
+          <li data-lang="en">Dynamic forms per activity type (text, photos, signature, GPS)</li>
+          <li data-lang="es">Modo offline-first con cola de sincronizaci&oacute;n autom&aacute;tica</li>
+          <li data-lang="en">Offline-first mode with automatic sync queue</li>
+          <li data-lang="es">Control de inventario y consumo de materiales por t&eacute;cnico</li>
+          <li data-lang="en">Inventory control and per-technician material consumption</li>
+          <li data-lang="es">Roles: Administrador, Supervisor, T&eacute;cnico y Cliente</li>
+          <li data-lang="en">Roles: Administrator, Supervisor, Technician and Client</li>
+          <li data-lang="es">Dashboard con reportes en tiempo real por estado, t&eacute;cnico y tipo</li>
+          <li data-lang="en">Real-time dashboard with reports by status, technician and type</li>
+          <li data-lang="es">Panel de insights con indicadores clave de la operaci&oacute;n</li>
+          <li data-lang="en">Insights panel with key operational indicators</li>
+          <li data-lang="es">Asistente con IA para consultar y gestionar actividades en lenguaje natural</li>
+          <li data-lang="en">AI assistant to query and manage activities in natural language</li>
+          <li data-lang="es">App m&oacute;vil nativa (Expo/React Native) con c&aacute;mara y GPS</li>
+          <li data-lang="en">Native mobile app (Expo/React Native) with camera and GPS</li>
+        </ul>
+        <div class="stack-row">
+          <span class="stack-chip">Node.js + Express</span>
+          <span class="stack-chip">PostgreSQL</span>
+          <span class="stack-chip">React + Vite</span>
+          <span class="stack-chip">React Native / Expo</span>
+          <span class="stack-chip">IndexedDB (Dexie)</span>
+          <span class="stack-chip">JWT + RBAC</span>
+        </div>
+      </div>
+      <div class="proj-shot" style="border-top: 1px solid var(--bd); border-bottom: none;">
+        <img src="assets/syncgle-mobile.jpeg" alt="App móvil de Syncgle mostrando una actividad con foto de evidencia, firma y GPS" style="max-width: 280px; margin: 24px auto; display: block; border-radius: 10px;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="inner">
+    <p class="eyebrow" data-lang="es">Habilidades t&eacute;cnicas</p>
+    <p class="eyebrow" data-lang="en">Technical skills</p>
+    <h2 data-lang="es">Herramientas y pr&aacute;cticas</h2>
+    <h2 data-lang="en">Tools and practices</h2>
+    <p class="sec-desc" data-lang="es">Pensamiento anal&iacute;tico aplicado a pruebas y validaci&oacute;n de datos, enfoque en calidad y automatizaci&oacute;n, adaptabilidad a m&uacute;ltiples tecnolog&iacute;as y trabajo &aacute;gil (Scrum).</p>
+    <p class="sec-desc" data-lang="en">Analytical thinking applied to testing and data validation, focus on quality and automation, adaptability across technologies, and agile (Scrum) teamwork.</p>
+
+    <div class="skills-grid">
+      <div class="skill-cell">
+        <div class="skill-h" data-lang="es">Lenguajes</div>
+        <div class="skill-h" data-lang="en">Languages</div>
+        <div class="skill-chips">
+          <span class="chip">Java</span><span class="chip">Python</span><span class="chip">JavaScript / TypeScript</span><span class="chip">SQL</span>
+        </div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-h" data-lang="es">Automatizaci&oacute;n y pruebas</div>
+        <div class="skill-h" data-lang="en">Automation &amp; testing</div>
+        <div class="skill-chips">
+          <span class="chip">Selenium</span><span class="chip">WebdriverIO</span><span class="chip">Appium</span><span class="chip">Playwright</span><span class="chip">Cucumber</span><span class="chip">Mocha</span><span class="chip">Postman</span>
+        </div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-h" data-lang="es">IA aplicada a QA</div>
+        <div class="skill-h" data-lang="en">AI applied to QA</div>
+        <div class="skill-chips">
+          <span class="chip" data-lang="es">Generaci&oacute;n de pruebas asistida por IA</span>
+          <span class="chip" data-lang="en">AI-assisted test generation</span>
+          <span class="chip" data-lang="es">Agentes de IA para exploraci&oacute;n de UI</span>
+          <span class="chip" data-lang="en">AI agents for UI exploration</span>
+          <span class="chip">Model Context Protocol (MCP)</span>
+        </div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-h" data-lang="es">Rendimiento y datos</div>
+        <div class="skill-h" data-lang="en">Performance &amp; data</div>
+        <div class="skill-chips">
+          <span class="chip">Apache Spark</span><span class="chip">Sitespeed.io</span><span class="chip">Artillery.io</span><span class="chip" data-lang="es">Validaci&oacute;n de datos</span><span class="chip" data-lang="en">Data testing</span>
+        </div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-h" data-lang="es">CI/CD y herramientas</div>
+        <div class="skill-h" data-lang="en">CI/CD &amp; tools</div>
+        <div class="skill-chips">
+          <span class="chip">Jenkins</span><span class="chip">Git</span><span class="chip">Docker</span><span class="chip">Jira</span><span class="chip">Slack</span>
+        </div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-h" data-lang="es">Pr&aacute;cticas</div>
+        <div class="skill-h" data-lang="en">Practices</div>
+        <div class="skill-chips">
+          <span class="chip">TDD</span><span class="chip">BDD</span><span class="chip">API testing</span>
+          <span class="chip" data-lang="es">Pruebas de regresi&oacute;n</span><span class="chip" data-lang="en">Regression testing</span>
+          <span class="chip" data-lang="es">Metodolog&iacute;as &aacute;giles (Scrum)</span><span class="chip" data-lang="en">Agile methodologies (Scrum)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="inner">
+    <p class="eyebrow" data-lang="es">Educaci&oacute;n</p>
+    <p class="eyebrow" data-lang="en">Education</p>
+    <h2 data-lang="es">Formaci&oacute;n acad&eacute;mica</h2>
+    <h2 data-lang="en">Academic background</h2>
+    <div class="edu-item">
+      <div>
+        <div class="edu-name" data-lang="es">Ingenier&iacute;a de Sistemas</div>
+        <div class="edu-name" data-lang="en">Systems Engineering</div>
+        <div class="edu-inst">Universidad Nacional Abierta y a Distancia (UNAD) &middot; Barranquilla, Atl&aacute;ntico</div>
+      </div>
+      <div class="edu-date" data-lang="es">Jun 2025</div>
+      <div class="edu-date" data-lang="en">Jun 2025</div>
+    </div>
+    <div class="edu-item">
+      <div>
+        <div class="edu-name" data-lang="es">Tecn&oacute;logo en An&aacute;lisis y Desarrollo de Sistemas de Informaci&oacute;n</div>
+        <div class="edu-name" data-lang="en">Technologist in Analysis and Development of Information Systems</div>
+        <div class="edu-inst">Servicio Nacional de Aprendizaje (SENA) &middot; Barranquilla, Atl&aacute;ntico</div>
+      </div>
+      <div class="edu-date" data-lang="es">Sep 2018</div>
+      <div class="edu-date" data-lang="en">Sep 2018</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-sec" style="border-bottom: none;">
+  <div class="inner">
+    <p class="eyebrow" data-lang="es">Contacto</p>
+    <p class="eyebrow" data-lang="en">Contact</p>
+    <h2 data-lang="es">Hablemos</h2>
+    <h2 data-lang="en">Let's talk</h2>
+    <p data-lang="es">Abierto a nuevas oportunidades en QA, automatizaci&oacute;n y desarrollo de producto. Escr&iacute;beme por correo o LinkedIn.</p>
+    <p data-lang="en">Open to new opportunities in QA, automation and product development. Reach out by email or LinkedIn.</p>
+    <div class="contact-ctas">
+      <a class="js-email-link btn-p" href="javascript:void(0)" data-lang="es">Enviar correo</a>
+      <a class="js-email-link btn-p" href="javascript:void(0)" data-lang="en">Send email</a>
+      <a href="https://linkedin.com/in/luisdelosreyes/" target="_blank" rel="noopener" class="btn-g">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <span class="foot-copy" data-lang="es">&copy; 2026 Luis De Los Reyes</span>
+    <span class="foot-copy" data-lang="en">&copy; 2026 Luis De Los Reyes</span>
+    <div class="foot-links">
+      <a href="#projects" data-lang="es">Proyectos</a>
+      <a href="#projects" data-lang="en">Projects</a>
+      <a class="js-email-link" href="javascript:void(0)"><span class="js-email-text" data-lang="es">Revelar correo</span><span class="js-email-text" data-lang="en">Reveal email</span></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var stored = null;
+    try { stored = localStorage.getItem('lang'); } catch (e) {}
+    var lang = stored || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'es');
+    function setLang(l) {
+      document.body.classList.remove('lang-es', 'lang-en');
+      document.body.classList.add('lang-' + l);
+      document.documentElement.lang = l;
+      document.querySelectorAll('.lang-btn').forEach(function (b) {
+        b.classList.toggle('on', b.getAttribute('data-set-lang') === l);
+      });
+      try { localStorage.setItem('lang', l); } catch (e) {}
+    }
+    document.querySelectorAll('.lang-btn').forEach(function (b) {
+      b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang')); });
+    });
+    setLang(lang);
+  })();
+
+  (function () {
+    // The email address is never written into the DOM until a real click
+    // happens, so page-scanning scraper bots/extensions (which read the
+    // rendered DOM but don't simulate clicks) never see it.
+    var reversed = 'moc.liamg@10seyersoled.siul';
+    function getAddress() { return reversed.split('').reverse().join(''); }
+    document.querySelectorAll('.js-email-link').forEach(function (el) {
+      el.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        var address = getAddress();
+        el.querySelectorAll('.js-email-text').forEach(function (t) { t.textContent = address; });
+        window.location.href = 'mailto:' + address;
+      });
+    });
+  })();
+</script>
+
+</body>
 </html>
