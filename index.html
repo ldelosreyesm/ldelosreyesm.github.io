@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Luis De Los Reyes — QA Automation Engineer</title>
-<meta name="description" content="Portafolio de Luis De Los Reyes — QA Automation Engineer especializado en Selenium, WebdriverIO, Appium y automatización asistida por IA. Creador de SARA y Syncgle." />
+<meta name="description" content="Portafolio de Luis De Los Reyes — QA Automation Engineer especializado en Selenium, WebdriverIO, Appium y automatización asistida por IA. Creador de SARA, Syncgle y Comercia." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
 <style>
@@ -28,6 +28,8 @@
     --sara-t:  #3dbdbd;
     --sync:    #5b6ef5;
     --sync-t:  #8b97ff;
+    --comercia:   #2f6fed;
+    --comercia-t: #6d9bff;
   }
 
   html { font-size: 15px; scroll-behavior: smooth; }
@@ -109,6 +111,7 @@
   .proj-tag { font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; }
   .proj-tag.sara { color: var(--sara-t); border: 1px solid #1e6060; background: rgba(20,120,120,.08); }
   .proj-tag.sync { color: var(--sync-t); border: 1px solid #2d3a80; background: rgba(91,110,245,.1); }
+  .proj-tag.comercia { color: var(--comercia-t); border: 1px solid #1d3f8f; background: rgba(47,111,237,.1); }
   .proj-desc { font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: 20px; max-width: 640px; }
   .proj-feats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 24px; margin-bottom: 20px; }
   @media (max-width: 560px) { .proj-feats { grid-template-columns: 1fr; } }
@@ -116,6 +119,7 @@
   .proj-feats li::before { content: ''; position: absolute; left: 0; top: 12px; width: 4px; height: 4px; border-radius: 50%; }
   .proj-card.is-sara .proj-feats li::before { background: var(--sara-t); }
   .proj-card.is-sync .proj-feats li::before { background: var(--sync-t); }
+  .proj-card.is-comercia .proj-feats li::before { background: var(--comercia-t); }
   .stack-row { display: flex; gap: 7px; flex-wrap: wrap; }
   .stack-chip { font-size: .72rem; font-weight: 600; color: var(--muted); background: var(--bg-code); border: 1px solid var(--bd); padding: 4px 10px; border-radius: 5px; }
 
@@ -184,8 +188,8 @@
       <p class="hero-eyebrow" data-lang="es">QA Automation Engineer &middot; Constructor de productos</p>
       <p class="hero-eyebrow" data-lang="en">QA Automation Engineer &middot; Product Builder</p>
       <h1>Luis De Los Reyes</h1>
-      <p class="hero-sub" data-lang="es">Ingeniero de automatizaci&oacute;n de pruebas con m&aacute;s de 8 a&ntilde;os de experiencia en desarrollo y QA. Automatizo software con Selenium, WebdriverIO y Appium, y dise&ntilde;o flujos de pruebas asistidos por IA. Fuera del trabajo, construyo productos propios de principio a fin: SARA y Syncgle.</p>
-      <p class="hero-sub" data-lang="en">Automation Test Engineer with 8+ years of experience in software development and QA. I automate software with Selenium, WebdriverIO and Appium, and design AI-assisted testing workflows. Outside of work, I build my own products end to end: SARA and Syncgle.</p>
+      <p class="hero-sub" data-lang="es">Ingeniero de automatizaci&oacute;n de pruebas con m&aacute;s de 8 a&ntilde;os de experiencia en desarrollo y QA. Automatizo software con Selenium, WebdriverIO y Appium, y dise&ntilde;o flujos de pruebas asistidos por IA. Fuera del trabajo, construyo productos propios de principio a fin: SARA, Syncgle y Comercia.</p>
+      <p class="hero-sub" data-lang="en">Automation Test Engineer with 8+ years of experience in software development and QA. I automate software with Selenium, WebdriverIO and Appium, and design AI-assisted testing workflows. Outside of work, I build my own products end to end: SARA, Syncgle and Comercia.</p>
       <div class="hero-ctas">
         <a href="#projects" class="btn-p" data-lang="es">Ver proyectos</a>
         <a href="#projects" class="btn-p" data-lang="en">View projects</a>
@@ -210,8 +214,8 @@
       <p class="eyebrow" data-lang="en">About</p>
       <p data-lang="es">Soy QA Automation Engineer en <strong>Qrvey</strong> desde 2020, donde automatizo pruebas con Selenium, WebdriverIO y Appium, ejecuto pruebas de rendimiento con Sitespeed.io y Artillery.io, e integro los resultados de las ejecuciones con Slack vía CI/CD. Tambi&eacute;n contribuyo a un framework interno de QA asistido por IA (Node.js + Playwright + Playwright MCP), donde un agente explora la aplicaci&oacute;n a partir de especificaciones y genera pruebas de regresi&oacute;n reproducibles, con seguimiento de cobertura sobre cerca de 1.000 casos planificados.</p>
       <p data-lang="en">I've been a QA Automation Engineer at <strong>Qrvey</strong> since 2020, automating tests with Selenium, WebdriverIO and Appium, running performance tests with Sitespeed.io and Artillery.io, and integrating test results with Slack via CI/CD. I also contribute to an in-house AI-assisted QA framework (Node.js + Playwright + Playwright MCP), where an agent explores the app from feature specs and generates reproducible regression tests, tracking coverage across close to 1,000 planned test cases.</p>
-      <p data-lang="es">Antes de eso pas&eacute; varios a&ntilde;os en <strong>Ludycom S.A.</strong>, empezando en soporte de infraestructura y sistemas GIS, pasando por an&aacute;lisis y ejecuci&oacute;n de pruebas, hasta desarrollo de aplicaciones Android nativas. Ese recorrido &mdash;de campo a desarrollo a QA&mdash; es la misma mezcla que uso hoy para construir mis propios productos: SARA (gesti&oacute;n acad&eacute;mica) y Syncgle (gesti&oacute;n de trabajo en campo).</p>
-      <p data-lang="en">Before that I spent several years at <strong>Ludycom S.A.</strong>, starting in infrastructure and GIS support, moving through test analysis and execution, up to native Android development. That path &mdash;from the field to development to QA&mdash; is the same mix I use today to build my own products: SARA (academic management) and Syncgle (field work management).</p>
+      <p data-lang="es">Antes de eso pas&eacute; varios a&ntilde;os en <strong>Ludycom S.A.</strong>, empezando en soporte de infraestructura y sistemas GIS, pasando por an&aacute;lisis y ejecuci&oacute;n de pruebas, hasta desarrollo de aplicaciones Android nativas. Ese recorrido &mdash;de campo a desarrollo a QA&mdash; es la misma mezcla que uso hoy para construir mis propios productos: SARA (gesti&oacute;n acad&eacute;mica), Syncgle (gesti&oacute;n de trabajo en campo) y Comercia (e-commerce local).</p>
+      <p data-lang="en">Before that I spent several years at <strong>Ludycom S.A.</strong>, starting in infrastructure and GIS support, moving through test analysis and execution, up to native Android development. That path &mdash;from the field to development to QA&mdash; is the same mix I use today to build my own products: SARA (academic management), Syncgle (field work management) and Comercia (local e-commerce).</p>
     </div>
     <div class="fact-list">
       <div class="fact"><span class="fact-k" data-lang="es">Rol actual</span><span class="fact-k" data-lang="en">Current role</span><span class="fact-v" data-lang="es">Senior Automated Tester, Qrvey</span><span class="fact-v" data-lang="en">Senior Automated Tester, Qrvey</span></div>
@@ -308,8 +312,8 @@
     <p class="eyebrow" data-lang="en">Personal projects</p>
     <h2 data-lang="es">Productos que dise&ntilde;&eacute; y constru&iacute; de principio a fin</h2>
     <h2 data-lang="en">Products I designed and built end to end</h2>
-    <p class="sec-desc" data-lang="es">De la experiencia de campo (GIS, soporte t&eacute;cnico) y del oficio de QA nacieron estos dos productos: uno para instituciones educativas, otro para equipos de trabajo en terreno. Ambos est&aacute;n desplegados y en uso.</p>
-    <p class="sec-desc" data-lang="en">From field experience (GIS, technical support) and the craft of QA came these two products: one for educational institutions, one for field work teams. Both are deployed and in use.</p>
+    <p class="sec-desc" data-lang="es">De la experiencia de campo (GIS, soporte t&eacute;cnico) y del oficio de QA nacieron estos productos: uno para instituciones educativas, otro para equipos de trabajo en terreno, y un tercero para peque&ntilde;os negocios que quieren vender en l&iacute;nea sin pagar comisi&oacute;n. SARA y Syncgle est&aacute;n desplegados y en uso; Comercia est&aacute; en desarrollo activo, con lanzamiento previsto en comercia-app.com.</p>
+    <p class="sec-desc" data-lang="en">From field experience (GIS, technical support) and the craft of QA came these products: one for educational institutions, one for field work teams, and a third for small businesses that want to sell online without paying commission. SARA and Syncgle are deployed and in use; Comercia is in active development, launching soon at comercia-app.com.</p>
 
     <!-- SARA -->
     <div class="proj-card is-sara">
@@ -388,6 +392,52 @@
       </div>
       <div class="proj-shot" style="border-top: 1px solid var(--bd); border-bottom: none;">
         <img src="assets/syncgle-mobile.jpeg" alt="App móvil de Syncgle mostrando una actividad con foto de evidencia, firma y GPS" style="max-width: 280px; margin: 24px auto; display: block; border-radius: 10px;" />
+      </div>
+    </div>
+
+    <!-- COMERCIA -->
+    <div class="proj-card is-comercia">
+      <div class="proj-shot">
+        <img src="assets/comercia-landing.png" alt="Landing de Comercia con el mensaje 0% de comisión y una tienda de ejemplo en el celular" />
+      </div>
+      <div class="proj-body">
+        <div class="proj-top">
+          <img class="proj-logo" src="assets/comercia-logo.png" alt="Comercia" />
+          <span class="proj-name">Comercia</span>
+          <span class="proj-tag comercia" data-lang="es">E-commerce local</span>
+          <span class="proj-tag comercia" data-lang="en">Local e-commerce</span>
+        </div>
+        <p class="proj-desc" data-lang="es">Comercia es una plataforma SaaS multi-tenant que le da a cualquier negocio peque&ntilde;o en Colombia (comida, tiendas de barrio, belleza, floristerías...) su propia tienda en l&iacute;nea con su marca: cat&aacute;logo, pedidos, pagos locales (efectivo, Bre-B, Nequi, tarjeta/PSE con Wompi) y seguimiento del pedido, todo sin cobrar comisi&oacute;n por venta &mdash;a diferencia de las apps de domicilios. En desarrollo activo, pr&oacute;ximo lanzamiento en <strong>comercia-app.com</strong>.</p>
+        <p class="proj-desc" data-lang="en">Comercia is a multi-tenant SaaS platform that gives any small business in Colombia (restaurants, corner stores, beauty salons, florists...) its own branded online store: catalog, orders, local payments (cash, Bre-B, Nequi, card/PSE via Wompi) and order tracking &mdash;with zero commission per sale, unlike delivery apps. In active development, launching soon at <strong>comercia-app.com</strong>.</p>
+        <ul class="proj-feats">
+          <li data-lang="es">Tienda p&uacute;blica personalizada por negocio: marca, color, cat&aacute;logo, secciones (qui&eacute;nes somos, destacados, testimonios)</li>
+          <li data-lang="en">Custom branded storefront per business: brand, color, catalog, sections (about us, highlights, testimonials)</li>
+          <li data-lang="es">Checkout con recalculo de precios en servidor y pagos: efectivo, transferencia o Wompi (tarjeta/PSE), cada negocio con su propia cuenta</li>
+          <li data-lang="en">Server-recalculated checkout with cash, transfer, or Wompi (card/PSE) payments &mdash;each business connects its own account</li>
+          <li data-lang="es">Seguimiento p&uacute;blico del pedido por link &uacute;nico, sin necesidad de cuenta</li>
+          <li data-lang="en">Public order tracking via unique link, no account needed</li>
+          <li data-lang="es">Panel del due&ntilde;o con pedidos en tiempo real, cat&aacute;logo, clientes y reportes de ventas</li>
+          <li data-lang="en">Owner panel with real-time orders, catalog, customers and sales reports</li>
+          <li data-lang="es">Asistente de ventas con IA (OpenAI) integrado en la tienda: responde sobre el cat&aacute;logo y puede armar el pedido por chat</li>
+          <li data-lang="en">AI sales assistant (OpenAI) embedded in the storefront: answers catalog questions and can build the order via chat</li>
+          <li data-lang="es">Multi-tenant real con Row Level Security de Postgres: aislamiento de datos probado en pruebas automatizadas</li>
+          <li data-lang="en">True multi-tenant with Postgres Row Level Security: data isolation verified by automated tests</li>
+        </ul>
+        <div class="stack-row">
+          <span class="stack-chip">Next.js 16 + TypeScript</span>
+          <span class="stack-chip">Supabase (Postgres, Auth, Realtime, Storage)</span>
+          <span class="stack-chip">Tailwind CSS</span>
+          <span class="stack-chip">Zod</span>
+          <span class="stack-chip">Wompi</span>
+          <span class="stack-chip">OpenAI</span>
+          <span class="stack-chip">Vitest + Playwright</span>
+        </div>
+      </div>
+      <div class="proj-shot" style="border-top: 1px solid var(--bd); border-bottom: none;">
+        <img src="assets/comercia-tienda.png" alt="Tienda pública de Comercia en celular, con el asistente de ventas con IA abierto" style="max-width: 280px; margin: 24px auto; display: block; border-radius: 10px;" />
+      </div>
+      <div class="proj-shot" style="border-top: 1px solid var(--bd);">
+        <img src="assets/comercia-panel.png" alt="Panel del dueño en Comercia mostrando el catálogo de productos" />
       </div>
     </div>
   </div>
